@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+
+
+<head>
+    <style>
+        .view{
+            width: 700px;
+            margin: 50px auto;
+        }
+
+
+        a:link {
+            color: white;
+            font-family: Arimo;
+        }
+
+        .alert-dark {
+            font-size: 20px;
+        }
+
+        .btn-primary {
+            font-size: 20px;
+
+        }
+
+
+        .btn-success {
+            font-family: Verdana;
+            text-decoration: none;
+
+        }
+
+        body {
+
+            text-decoration: none;
+            background-color: peru;
+        }
+
+        .view {
+            width: 700px;
+
+        }
+
+        .btn-circle.btn-xl {
+            width: 50px;
+            height: 50px;
+            padding: 14px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }
+        a:link{
+            text-decoration: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>siemanko</title>
+</head>
+<body>
+<div class="view">
+    <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action active">
+
+            <h2>Lista zadań do zrobienia:</h2>
+        </button>
+        <div type="button " class="list-group-item list-group-item-action "
+             th:each="task:${tasks}"><span th:text="${task.title}"></span>
+            <div class=pull-right>
+
+                <a th:href="|/done?id=${task.id} |">
+                    <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-ok"
+                                                                                    th:href="|/done?id=${task.id}"></i>
+                        <!--                    <a th:href="|/done?id=${task.id}" |> </a></button>--></button>
+                </a>
+            </div>
+        </div>
+        <button type="button" class="list-group-item list-group-item-action active">
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputPassword2" class="sr-only">dodaj...</label>
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="dodaj...">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Dodaj zadanie</button>
+            </form>
+
+
+        </button>
+<a th:href="archiwum">
+        <div class="list-group">
+            <h1 class="btn btn-primary btn-success btn-block">Zadania Zrobione(archiwum)</h1>
+            <button type="button" class="list-group-item list-group-item-action "
+                    th:each="task:${zrobione}">
+                <span th:text="${task.title}"></span>
+            </button>
+        </div>
+        </a>
+</body>
+</html>
